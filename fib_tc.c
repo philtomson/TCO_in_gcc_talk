@@ -1,12 +1,15 @@
 #include <stdint.h>
-uint64_t fib_tc( uint8_t n) {
-  uint64_t fib_helper(uint8_t n, uint64_t acc, uint64_t prev) {
+uint64_t fib_tc( uint32_t x) {
+  uint64_t fib_rec(uint32_t n, uint64_t acc, uint64_t prev) {
     if(n == 0) 
       return acc;
     else
-      return fib_helper( n-1, acc+prev, acc);
+      return fib_rec( n-1, acc+prev, acc);
   }
-  return fib_helper(n,1,0);
-}
 
+  if( x < 2)
+    return x;
+  else
+    return fib_rec(x-1,1,0);
+} 
 
