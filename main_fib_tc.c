@@ -1,7 +1,7 @@
 #include <stdio.h>
 #include <stdint.h>
 
-extern long long int fib_tc(uint32_t n);
+extern uint64_t fib_tc(uint32_t n);
 
 int main(int argc, char* argv[]) {
   if (argc != 2) {
