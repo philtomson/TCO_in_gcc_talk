@@ -2,7 +2,12 @@
  *
  */
 
+#include <stdio.h>
+
 long fact_rec(long n, long acc) {
+#ifdef DEBUG  
+  printf("fact(%d,%d)\n",n,acc);
+#endif
   if( n == 0 ){
     return acc;
   } else {

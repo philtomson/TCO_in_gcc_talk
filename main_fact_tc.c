@@ -2,11 +2,8 @@
  *
  */
 
-extern long fact_rec(long n, long acc);
-
-long fact_tc(long n) {
-  return fact_rec(n,1);
-}
+#include <stdlib.h>
+extern long fact_tc(long n);
 
 #include <stdio.h>
 int main(int argc, char* argv[]) {
