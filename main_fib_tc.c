@@ -1,4 +1,5 @@
 #include <stdio.h>
+#include <stdlib.h>
 #include <stdint.h>
 
 extern uint64_t fib_tc(uint32_t n);
@@ -8,7 +9,8 @@ int main(int argc, char* argv[]) {
     printf("usage: %s <integer>\n",argv[0]);
   }
   else {
-    printf("answer: %d\n",fib_tc(atoi(argv[1])));
+    int n = atoi(argv[1]);
+    printf("fib(%d) = %d\n",n, fib_tc(n));
   }
   return 0;
 }
