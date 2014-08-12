@@ -4,19 +4,23 @@
 	.globl	fib_rec
 	.type	fib_rec, @function
 fib_rec:
+  ; rdi (edi) is first arg (n)
+  ; rsi (esi) is 2nd arg (accum)
+  ; rdx (edx) is 3rd arg (prev) 
 .LFB22:
 	.cfi_startproc
 	mov	rax, rsi
-	test	edi, edi
-	je	.L6
-	sub	rsp, 8
+	test	edi, edi ; set ZF if edi is 0
+	je	.L6        ; jump if ZF=1 to L6
+	sub	rsp, 8    ;stack frame setup?
 	.cfi_def_cfa_offset 16
-	lea	rax, [rsi+rdx]
-	sub	edi, 1
-	mov	rdx, rsi
-	mov	rsi, rax
+	lea	rax, [rsi+rdx] ; accum+prev -> rax
+  ; set up arguments for next call:
+	sub	edi, 1    ; n-1 -> n
+	mov	rdx, rsi  ; accum -> prev
+	mov	rsi, rax  ; (accum+prev) -> accum
 	call	fib_rec ;NOTE this recursive call
-	add	rsp, 8
+	add	rsp, 8    ;
 	.cfi_def_cfa_offset 8
 .L6:
 	rep; ret
